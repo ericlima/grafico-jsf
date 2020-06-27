@@ -1,0 +1,152 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" template="/WEB-INF/template.xhtml">
+	<ui:define name="titulo">labs</ui:define>
+
+	<ui:define name="content">
+		<h:head>
+			<!-- Compiled and minified CSS -->
+			<link rel="stylesheet"
+				href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css"
+				integrity="sha256-fGJODaGYSINeMscXSbyu3k+sCt9ON9XOpsVOcvco3Qg="
+				crossorigin="anonymous" />
+
+			<!-- Compiled and minified JavaScript -->
+			<script
+				src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"
+				integrity="sha256-pVJ6toFhRjat2LSvxugXvMnNDp33i00nfn0CpPXZevs="
+				crossorigin="anonymous"></script>
+
+			<script type="text/javascript"
+				src="https://www.gstatic.com/charts/loader.js"></script>
+
+			<script type="text/javascript">
+				google.charts.load('current', {
+					callback : function() {
+						drawChartParticipanteIdadeAbsolutoAtual();
+						window.addEventListener('resize', drawChartParticipanteIdadeAbsolutoAtual, false);
+					},
+					packages : [ 'corechart' ]
+				});
+			</script>
+			<style>
+				body .ui-datatable thead th {
+					background-color: #E71D73;
+					color: #FFFFFF;
+				}
+			</style>
+		</h:head>
+
+		<div>
+	
+			<div>
+
+				<h:form id="chart">
+					<div id="inner_chart"></div>
+
+					<script type="text/javascript">
+				    
+					google.charts.load('current', {
+						callback : function() {
+							drawchart();
+							window.addEventListener('resize', drawchart, false);
+						},
+						packages : [ 'corechart' ]
+					});
+					google.charts.setOnLoadCallback(drawChartParticipanteIdadeAbsolutoAtual);
+					
+					
+				    function drawchart() {
+				    	
+			            var container = document.getElementById('inner_chart');
+
+			            var chart = new google.visualization.ColumnChart(container);
+
+				    	var data = google.visualization.arrayToDataTable(${}
+				    			
+				    			
+				    			[
+							[ 'Competência','0-25' , { role: "style" }, '26-40', { role: "style" },'41-55', { role: "style" },'56-70', { role: "style" },'71+', { role: "style" } ], 
+							[ 'Janeiro'    , #{dashboardParticipanteIdadeAbsolutoAnualView.participante.idade0025Jan},'#E71D73',
+									     	#{dashboardParticipanteIdadeAbsolutoAnualView.participante.idade2640Jan},'#F1871B',
+									     	#{dashboardParticipanteIdadeAbsolutoAnualView.participante.idade4155Jan},'#6CBE98',
+									     	#{dashboardParticipanteIdadeAbsolutoAnualView.participante.idade5670Jan},'#304093',
+									     	#{dashboardParticipanteIdadeAbsolutoAnualView.participante.idade71Jan},'#B5CD13'], 
+							[ 'Fevereiro', 	#{dashboardParticipanteIdadeAbsolutoAnualView.participante.idade0025Fev},'#E71D73', 
+											#{dashboardParticipanteIdadeAbsolutoAnualView.participante.idade2640Fev},'#F1871B',
+											#{dashboardParticipanteIdadeAbsolutoAnualView.participante.idade4155Fev},'#6CBE98',
+											#{dashboardParticipanteIdadeAbsolutoAnualView.participante.idade5670Fev},'#304093',
+											#{dashboardParticipanteIdadeAbsolutoAnualView.participante.idade71Fev},'#B5CD13'], 
+							[ 'Março', 		#{dashboardParticipanteIdadeAbsolutoAnualView.participante.idade0025Mar},'#E71D73', 
+										    #{dashboardParticipanteIdadeAbsolutoAnualView.participante.idade2640Mar},'#F1871B',
+											#{dashboardParticipanteIdadeAbsolutoAnualView.participante.idade4155Mar},'#6CBE98',
+											#{dashboardParticipanteIdadeAbsolutoAnualView.participante.idade5670Mar},'#304093',
+											#{dashboardParticipanteIdadeAbsolutoAnualView.participante.idade71Mar},'#B5CD13'], 
+							[ 'Abril', 		#{dashboardParticipanteIdadeAbsolutoAnualView.participante.idade0025Abr},'#E71D73', 
+  											#{dashboardParticipanteIdadeAbsolutoAnualView.participante.idade2640Abr},'#F1871B',
+											#{dashboardParticipanteIdadeAbsolutoAnualView.participante.idade4155Abr},'#6CBE98',
+											#{dashboardParticipanteIdadeAbsolutoAnualView.participante.idade5670Abr},'#304093',
+											#{dashboardParticipanteIdadeAbsolutoAnualView.participante.idade71Abr},'#B5CD13'], 
+							[ 'Maio', 		#{dashboardParticipanteIdadeAbsolutoAnualView.participante.idade0025Mai},'#E71D73', 
+											#{dashboardParticipanteIdadeAbsolutoAnualView.participante.idade2640Mai},'#F1871B',
+											#{dashboardParticipanteIdadeAbsolutoAnualView.participante.idade4155Mai},'#6CBE98',
+											#{dashboardParticipanteIdadeAbsolutoAnualView.participante.idade5670Mai},'#304093',
+											#{dashboardParticipanteIdadeAbsolutoAnualView.participante.idade71Mai},'#B5CD13'], 
+							[ 'Junho', 		#{dashboardParticipanteIdadeAbsolutoAnualView.participante.idade0025Jun},'#E71D73', 
+											#{dashboardParticipanteIdadeAbsolutoAnualView.participante.idade2640Jun},'#F1871B',
+											#{dashboardParticipanteIdadeAbsolutoAnualView.participante.idade4155Jun},'#6CBE98',
+											#{dashboardParticipanteIdadeAbsolutoAnualView.participante.idade5670Jun},'#304093',
+											#{dashboardParticipanteIdadeAbsolutoAnualView.participante.idade71Jun},'#B5CD13'], 
+							[ 'Julho', 		#{dashboardParticipanteIdadeAbsolutoAnualView.participante.idade0025Jul},'#E71D73', 
+											#{dashboardParticipanteIdadeAbsolutoAnualView.participante.idade2640Jul},'#F1871B',
+											#{dashboardParticipanteIdadeAbsolutoAnualView.participante.idade4155Jul},'#6CBE98',
+											#{dashboardParticipanteIdadeAbsolutoAnualView.participante.idade5670Jul},'#304093',
+											#{dashboardParticipanteIdadeAbsolutoAnualView.participante.idade71Jul},'#B5CD13'], 
+							[ 'Agosto', 	#{dashboardParticipanteIdadeAbsolutoAnualView.participante.idade0025Ago},'#E71D73', 
+											#{dashboardParticipanteIdadeAbsolutoAnualView.participante.idade2640Ago},'#F1871B',
+											#{dashboardParticipanteIdadeAbsolutoAnualView.participante.idade4155Ago},'#6CBE98',
+											#{dashboardParticipanteIdadeAbsolutoAnualView.participante.idade5670Ago},'#304093',
+											#{dashboardParticipanteIdadeAbsolutoAnualView.participante.idade71Ago},'#B5CD13'], 
+							[ 'Setembro', 	#{dashboardParticipanteIdadeAbsolutoAnualView.participante.idade0025Set},'#E71D73', 
+											#{dashboardParticipanteIdadeAbsolutoAnualView.participante.idade2640Set},'#F1871B',
+											#{dashboardParticipanteIdadeAbsolutoAnualView.participante.idade4155Set},'#6CBE98',
+											#{dashboardParticipanteIdadeAbsolutoAnualView.participante.idade5670Set},'#304093',
+											#{dashboardParticipanteIdadeAbsolutoAnualView.participante.idade71Set},'#B5CD13'], 
+							[ 'Outubro', 	#{dashboardParticipanteIdadeAbsolutoAnualView.participante.idade0025Out},'#E71D73', 
+											#{dashboardParticipanteIdadeAbsolutoAnualView.participante.idade2640Out},'#F1871B',
+											#{dashboardParticipanteIdadeAbsolutoAnualView.participante.idade4155Out},'#6CBE98',
+											#{dashboardParticipanteIdadeAbsolutoAnualView.participante.idade5670Out},'#304093',
+											#{dashboardParticipanteIdadeAbsolutoAnualView.participante.idade71Out},'#B5CD13'], 
+							[ 'Novembro', 	#{dashboardParticipanteIdadeAbsolutoAnualView.participante.idade0025Nov},'#E71D73', 
+											#{dashboardParticipanteIdadeAbsolutoAnualView.participante.idade2640Nov},'#F1871B',
+											#{dashboardParticipanteIdadeAbsolutoAnualView.participante.idade4155Nov},'#6CBE98',
+											#{dashboardParticipanteIdadeAbsolutoAnualView.participante.idade5670Nov},'#304093',
+											#{dashboardParticipanteIdadeAbsolutoAnualView.participante.idade71Nov},'#B5CD13'], 
+							[ 'Dezembro', 	#{dashboardParticipanteIdadeAbsolutoAnualView.participante.idade0025Dez},'#E71D73', 
+							     			#{dashboardParticipanteIdadeAbsolutoAnualView.participante.idade2640Dez},'#F1871B',
+							     			#{dashboardParticipanteIdadeAbsolutoAnualView.participante.idade4155Dez},'#6CBE98',
+							     			#{dashboardParticipanteIdadeAbsolutoAnualView.participante.idade5670Dez},'#304093',
+							     			#{dashboardParticipanteIdadeAbsolutoAnualView.participante.idade71Dez},'#B5CD13'], 
+						    ]);
+	
+				      	var view = new google.visualization.DataView(data);
+	
+						var options = {
+							colors: ["#E71D73", "#F1871B", '#6CBE98', '#304093', '#B5CD13'],
+							pointSize: 5
+						};
+
+						chart.draw(view, options);
+						
+				    }
+				</script>
+
+				</h:form>
+			</div>
+		</div>
+
+	</ui:define>
+
+</ui:composition>

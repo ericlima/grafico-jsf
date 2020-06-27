@@ -1,0 +1,30 @@
+package com.lima;
+
+@ManagedBean(name = "pageModel")
+@ViewScoped
+public class pageModel {
+
+	private List<String> meses;
+	
+	@PostConstruct
+	public void init() {
+		
+		meses = new ArrayList<>();
+		
+		meses.add("Janeiro");
+		meses.add("Janeiro");
+		meses.add("Janeiro");
+		meses.add("Janeiro");
+		meses.add("Janeiro");
+		meses.add("Janeiro");
+		meses.add("Janeiro");
+		meses.add("Janeiro");
+		meses.add("Janeiro");
+		meses.add("Janeiro");
+		meses.add("Janeiro");
+		meses.add("Janeiro");
+		
+	}
+	
+	
+}

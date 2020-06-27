@@ -1,0 +1,7 @@
+package com.lima;
+
+@ManagedBean(name = "pageModel")
+@ViewScoped
+public class pageModel {
+
+}

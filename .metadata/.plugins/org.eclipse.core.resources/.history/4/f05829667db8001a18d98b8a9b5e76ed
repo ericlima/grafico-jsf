@@ -1,0 +1,88 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" template="/templates/template.xhtml">
+	<ui:define name="titulo">labs</ui:define>
+
+	<ui:define name="content">
+		<h:head>
+			<!-- Compiled and minified CSS -->
+			<link rel="stylesheet"
+				href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css"
+				integrity="sha256-fGJODaGYSINeMscXSbyu3k+sCt9ON9XOpsVOcvco3Qg="
+				crossorigin="anonymous" />
+
+			<!-- Compiled and minified JavaScript -->
+			<script
+				src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"
+				integrity="sha256-pVJ6toFhRjat2LSvxugXvMnNDp33i00nfn0CpPXZevs="
+				crossorigin="anonymous"></script>
+
+			<script type="text/javascript"
+				src="https://www.gstatic.com/charts/loader.js"></script>
+
+			<script type="text/javascript">
+				google.charts.load('current', {
+					callback : function() {
+						drawChartParticipanteIdadeAbsolutoAtual();
+						window.addEventListener('resize', drawChartParticipanteIdadeAbsolutoAtual, false);
+					},
+					packages : [ 'corechart' ]
+				});
+			</script>
+			<style>
+				body .ui-datatable thead th {
+					background-color: #E71D73;
+					color: #FFFFFF;
+				}
+			</style>
+		</h:head>
+
+		<div>
+	
+			<div>
+
+				<h:form id="chart">
+					<div id="inner_chart"></div>
+
+					<script type="text/javascript">
+				    
+					google.charts.load('current', {
+						callback : function() {
+							drawchart();
+							window.addEventListener('resize', drawchart, false);
+						},
+						packages : [ 'corechart' ]
+					});
+					google.charts.setOnLoadCallback(drawChartParticipanteIdadeAbsolutoAtual);
+					
+					
+				    function drawchart() {
+				    	
+			            var container = document.getElementById('inner_chart');
+
+			            var chart = new google.visualization.ColumnChart(container);
+
+				    	var data = google.visualization.arrayToDataTable(JSON.parse("${pageModel.data}"));
+				    			
+	
+				      	var view = new google.visualization.DataView(data);
+	
+						var options = {
+							colors: ["#E71D73", "#F1871B", '#6CBE98', '#304093', '#B5CD13'],
+							pointSize: 5
+						};
+
+						chart.draw(view, options);
+						
+				    }
+				</script>
+
+				</h:form>
+			</div>
+		</div>
+
+	</ui:define>
+
+</ui:composition>
